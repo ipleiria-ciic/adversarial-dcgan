@@ -4,6 +4,7 @@ import torch
 import torch.nn as nn
 import torchvision.datasets as TD
 import torchvision.transforms as T
+import torchvision.models as models
 from torch.utils.data import DataLoader
 
 def use_device():
@@ -154,8 +155,26 @@ class Encoder(nn.Module):
             nn.LeakyReLU(0.2, inplace=True),
 
             nn.Conv2d(feature_map_e*8, latent_vector_z, 4, 1, 0, bias=False),
-            nn.Tanh()
         )
 
     def forward(self, x):
         return self.main(x).view(x.size(0), -1)
+    
+
+class VGGPerceptualLoss(nn.Module):
+    def __init__(self, layer=8):
+        """
+        Uses VGG-19 to compute perceptual loss.
+        The layer parameter determines which VGG feature map is used.
+        """
+        super(VGGPerceptualLoss, self).__init__()
+        vgg = models.vgg19(pretrained=True).features
+        self.vgg_layers = nn.Sequential(*list(vgg.children())[:layer])
+        for param in self.vgg_layers.parameters():
+            param.requires_grad = False
+        
+    def forward(self, x, y):
+        x_vgg = self.vgg_layers(x) 
+        y_vgg = self.vgg_layers(y)
+        loss = nn.functional.mse_loss(x_vgg, y_vgg)
+        return loss
