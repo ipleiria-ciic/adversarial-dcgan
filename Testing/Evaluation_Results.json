@@ -1,0 +1,90 @@
+[
+    {
+        "iteration": 0,
+        "correctly_classified": 5514,
+        "fooling_rate": 0.892455567645992,
+        "fooling_count": 4921,
+        "fid_score": 308.2965374409523,
+        "lpips_score": 0.7261307370462071
+    },
+    {
+        "iteration": 1000,
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8879216539717084,
+        "fooling_count": 4896,
+        "fid_score": 255.33761892936423,
+        "lpips_score": 0.5981612711537718
+    },
+    {
+        "iteration": 2000,
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8786724700761698,
+        "fooling_count": 4845,
+        "fid_score": 250.87418442480055,
+        "lpips_score": 0.587022615915067
+    },
+    {
+        "iteration": 3000,
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8917301414581066,
+        "fooling_count": 4917,
+        "fid_score": 273.4083291581493,
+        "lpips_score": 0.5738161146324012
+    },
+    {
+        "iteration": 4000,
+        "correctly_classified": 5514,
+        "fooling_rate": 0.886652158142909,
+        "fooling_count": 4889,
+        "fid_score": 271.1610365892304,
+        "lpips_score": 0.6225272879017677
+    },
+    {
+        "iteration": 5000,
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8886470801595938,
+        "fooling_count": 4900,
+        "fid_score": 281.9459934264494,
+        "lpips_score": 0.5890659399799164
+    },
+    {
+        "iteration": 6000,
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8893725063474791,
+        "fooling_count": 4904,
+        "fid_score": 275.57386695112353,
+        "lpips_score": 0.5857316462258727
+    },
+    {
+        "iteration": 7000,
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8886470801595938,
+        "fooling_count": 4900,
+        "fid_score": 276.269771316297,
+        "lpips_score": 0.6346632940933914
+    },
+    {
+        "iteration": 8000,
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8795792528110264,
+        "fooling_count": 4850,
+        "fid_score": 275.7495347561158,
+        "lpips_score": 0.5778642047338511
+    },
+    {
+        "iteration": 9000,
+        "correctly_classified": 5514,
+        "fooling_rate": 0.892999637286906,
+        "fooling_count": 4924,
+        "fid_score": 275.8755402625103,
+        "lpips_score": 0.6340023374747554
+    },
+    {
+        "iteration": 9999,
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8824809575625681,
+        "fooling_count": 4866,
+        "fid_score": 297.45037382756334,
+        "lpips_score": 0.5835868091684617
+    }
+]
