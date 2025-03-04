@@ -48,14 +48,14 @@ criterion = nn.BCELoss()
 real_label = 1.
 fake_label = 0.
 
-optimizerD = optim.Adam(netD.parameters(), adam_lr=adam_lr, betas=(adam_beta, 0.999))
-optimizerG = optim.Adam(netG.parameters(), adam_lr=adam_lr, betas=(adam_beta, 0.999))
+optimizerD = optim.Adam(netD.parameters(), lr=adam_lr, betas=(adam_beta, 0.999))
+optimizerG = optim.Adam(netG.parameters(), lr=adam_lr, betas=(adam_beta, 0.999))
 
 iters = 0
 G_losses = []
 D_losses = []
 
-if args.resume is None:
+if args.resume == 0 or args.resume is None:
     start_epoch = 0
 else:
     checkpoint = torch.load(f'DCGAN/{args.attack}/Models/Checkpoint-{args.attack}-Epoch-{args.resume}-{batch_size}.pth')
@@ -119,7 +119,14 @@ for epoch in range(start_epoch, num_epochs):
                 'D_loss': D_losses
             }, f'DCGAN/{args.attack}/Models/Checkpoint-{args.attack}-Epoch-{epoch}-{batch_size}.pth')
 
-torch.save(netG.state_dict(), f'DCGAN/{args.attack}/Models/G-{args.attack}-{batch_size}-{num_epochs}.pth')
+torch.save({
+    'netG_state_dict': netG.state_dict(),
+    'netD_state_dict': netD.state_dict(),
+    'optimizerG_state_dict': optimizerG.state_dict(),
+    'optimizerD_state_dict': optimizerD.state_dict(),
+    'G_loss': G_losses,
+    'D_loss': D_losses
+}, f'DCGAN/{args.attack}/Models/Checkpoint-{args.attack}-Epoch-{num_epochs}-{batch_size}.pth')
 
 plt.figure(figsize=(10,5))
 plt.title("Generator and Discriminator Loss During Training")
