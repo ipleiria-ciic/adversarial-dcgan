@@ -51,6 +51,9 @@ fake_label = 0.
 optimizerD = optim.Adam(netD.parameters(), lr=adam_lr, betas=(adam_beta, 0.999))
 optimizerG = optim.Adam(netG.parameters(), lr=adam_lr, betas=(adam_beta, 0.999))
 
+schedulerD = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizerD, mode='min', factor=0.5, patience=20)
+schedulerG = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizerG, mode='min', factor=0.5, patience=20)
+
 iters = 0
 G_losses = []
 D_losses = []
@@ -63,6 +66,8 @@ else:
     netD.load_state_dict(checkpoint['netD_state_dict'])
     optimizerG.load_state_dict(checkpoint['optimizerG_state_dict'])
     optimizerD.load_state_dict(checkpoint['optimizerD_state_dict'])
+    schedulerD.load_state_dict(checkpoint['schedulerD_state_dict'])
+    schedulerG.load_state_dict(checkpoint['schedulerG_state_dict'])
     G_losses.append(checkpoint['G_loss'])
     D_losses.append(checkpoint['D_loss'])
     start_epoch = checkpoint['epoch'] + 1
@@ -106,15 +111,21 @@ for epoch in range(start_epoch, num_epochs):
 
         G_losses.append(errG.item())
         D_losses.append(errD.item())
+
+        schedulerD.step(errD.item())
+        schedulerG.step(errG.item())
+
         iters += 1
 
-        if epoch % 500 == 0 or epoch == num_epochs - 1:
+        if epoch % 100 == 0 or epoch == num_epochs - 1:
             torch.save({
                 'epoch': epoch,
                 'netG_state_dict': netG.state_dict(),
                 'netD_state_dict': netD.state_dict(),
                 'optimizerG_state_dict': optimizerG.state_dict(),
                 'optimizerD_state_dict': optimizerD.state_dict(),
+                'schedulerG_state_dict': schedulerG.state_dict(),
+                'schedulerD_state_dict': schedulerD.state_dict(),
                 'G_loss': G_losses,
                 'D_loss': D_losses
             }, f'DCGAN/{args.attack}/Models/Checkpoint-{args.attack}-Epoch-{epoch}-{batch_size}.pth')
@@ -124,6 +135,8 @@ torch.save({
     'netD_state_dict': netD.state_dict(),
     'optimizerG_state_dict': optimizerG.state_dict(),
     'optimizerD_state_dict': optimizerD.state_dict(),
+    'schedulerG_state_dict': schedulerG.state_dict(),
+    'schedulerD_state_dict': schedulerD.state_dict(),
     'G_loss': G_losses,
     'D_loss': D_losses
 }, f'DCGAN/{args.attack}/Models/Checkpoint-{args.attack}-Epoch-{num_epochs}-{batch_size}.pth')
