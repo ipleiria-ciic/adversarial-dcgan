@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--attack", type=str)
 parser.add_argument("--epochs", type=int)
 parser.add_argument("--batch_size", type=int)
+parser.add_argument("--delta", type=int)
 parser.add_argument("--resume", type=int)
 args = parser.parse_args()
 
@@ -21,7 +22,7 @@ device = utils.use_device()
 # Set random seed for reproducibility
 utils.prepare_seed(seed=16)
 
-dataroot = f"Attacks/{args.attack}"
+dataroot = f"Attacks/{args.attack}-{args.delta}"
 gpu_number = 1
 image_size = 64
 adam_beta = 0.5
@@ -48,15 +49,19 @@ criterion = nn.BCELoss()
 real_label = 1.
 fake_label = 0.
 
-optimizerD = optim.Adam(netD.parameters(), lr=adam_lr, betas=(adam_beta, 0.999))
-optimizerG = optim.Adam(netG.parameters(), lr=adam_lr, betas=(adam_beta, 0.999))
+optimizerD = optim.Adam(netD.parameters(), lr=adam_lr, betas=(0.0001, 0.999))
+optimizerG = optim.Adam(netG.parameters(), lr=adam_lr, betas=(0.0002, 0.999))
 
-schedulerD = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizerD, mode='min', factor=0.5, patience=20)
-schedulerG = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizerG, mode='min', factor=0.5, patience=20)
+schedulerD = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizerD, mode='min', factor=0.8, patience=30, min_lr=1e-6)
+schedulerG = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizerG, mode='min', factor=0.8, patience=30, min_lr=1e-6)
+
+# schedulerD = torch.optim.lr_scheduler.ExponentialLR(optimizerD, gamma=0.99)
+# schedulerG = torch.optim.lr_scheduler.ExponentialLR(optimizerG, gamma=0.99)
 
 iters = 0
 G_losses = []
 D_losses = []
+best_errG = float('inf')
 
 if args.resume == 0 or args.resume is None:
     start_epoch = 0
@@ -105,15 +110,15 @@ for epoch in range(start_epoch, num_epochs):
 
         # Output training stats
         if i % 50 == 0:
-            print('[%d/%d][%d/%d]\tLoss_D: %.4f\tLoss_G: %.4f\tD(x): %.4f\tD(G(z)): %.4f / %.4f'
-                  % (epoch, num_epochs, i, len(dataloader),
-                     errD.item(), errG.item(), D_x, D_G_z1, D_G_z2))
+            debug_lr_D = optimizerD.param_groups[0]['lr']
+            debug_lr_G = optimizerG.param_groups[0]['lr']
+
+            print(f'[Epoch {epoch}/{num_epochs}][Batch {i:02}/{len(dataloader)}] - Loss_D: {errD.item():.4f} | Loss_G: {errG.item():.4f} | LR_D: {debug_lr_D:.4f} | LR_G: {debug_lr_G:.4f}')
+
+            # print('[%d/%d][%d/%d]\tLoss_D: %.4f\tLoss_G: %.4f\tD(x): %.4f\tD(G(z)): %.4f / %.4f' % (epoch, num_epochs, i, len(dataloader), errD.item(), errG.item(), D_x, D_G_z1, D_G_z2))
 
         G_losses.append(errG.item())
         D_losses.append(errD.item())
-
-        schedulerD.step(errD.item())
-        schedulerG.step(errG.item())
 
         iters += 1
 
@@ -128,7 +133,27 @@ for epoch in range(start_epoch, num_epochs):
                 'schedulerD_state_dict': schedulerD.state_dict(),
                 'G_loss': G_losses,
                 'D_loss': D_losses
-            }, f'DCGAN/{args.attack}/Models/Checkpoint-{args.attack}-Epoch-{epoch}-{batch_size}.pth')
+            }, f'DCGAN/{args.attack}/Models/Checkpoint-{args.attack}-Delta-{args.delta}-Epoch-{epoch}-{batch_size}.pth')
+
+        if errG.item() < best_errG:
+            best_errG = errG.item()
+            torch.save({
+                'epoch': epoch,
+                'netG_state_dict': netG.state_dict(),
+                'netD_state_dict': netD.state_dict(),
+                'optimizerG_state_dict': optimizerG.state_dict(),
+                'optimizerD_state_dict': optimizerD.state_dict(),
+                'schedulerG_state_dict': schedulerG.state_dict(),
+                'schedulerD_state_dict': schedulerD.state_dict(),
+                'G_loss': G_losses,
+                'D_loss': D_losses
+            }, f'DCGAN/{args.attack}/Models/Best-Checkpoint-{args.attack}-Delta-{args.delta}-Epoch-{epoch}-{batch_size}.pth')
+        
+        # if optimizerG.param_groups[0]['lr'] < 1e-4:
+        #     optimizerG.param_groups[0]['lr'] *= 1.1
+    
+    schedulerG.step(errG.item())
+    schedulerD.step(errD.item())
 
 torch.save({
     'netG_state_dict': netG.state_dict(),
@@ -139,7 +164,7 @@ torch.save({
     'schedulerD_state_dict': schedulerD.state_dict(),
     'G_loss': G_losses,
     'D_loss': D_losses
-}, f'DCGAN/{args.attack}/Models/Checkpoint-{args.attack}-Epoch-{num_epochs}-{batch_size}.pth')
+}, f'DCGAN/{args.attack}/Models/Checkpoint-{args.attack}-Delta-{args.delta}-{batch_size}.pth')
 
 plt.figure(figsize=(10,5))
 plt.title("Generator and Discriminator Loss During Training")
@@ -148,7 +173,7 @@ plt.plot(D_losses,label="D")
 plt.xlabel("iterations")
 plt.ylabel("Loss")
 plt.legend()
-plt.savefig(f'DCGAN/FGSM/Loss-{batch_size}-{num_epochs}.pdf')
+plt.savefig(f'DCGAN/FGSM/Loss-{batch_size}-Delta-{args.delta}-{num_epochs}.pdf')
 
 del netD
 del netG
