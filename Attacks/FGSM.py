@@ -10,15 +10,16 @@ import torchvision.transforms as transforms
 
 parser = argparse.ArgumentParser(description="FGSM Attack on Imagewoof Dataset")
 parser.add_argument("--model", type=str)
+parser.add_argument("--delta", type=str)
 args = parser.parse_args()
 
-epsilon = 0.120
-batch_size = 1
+delta = args.delta
+batch_size = 128
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 imagewoof_path = "Dataset/Imagewoof/train"
 model_path = f"Models/{args.model}.pt"
-output_dir = "Attacks/FGSM"
+output_dir = f"Attacks/FGSM-{args.delta}"
 
 os.makedirs(output_dir, exist_ok=True)
 
@@ -56,7 +57,7 @@ with alive_progress.alive_bar(len(dataloader), title="[ INFO ] Generating the FG
         model.zero_grad()
         loss.backward()
 
-        perturbation = epsilon * image_tensor.grad.sign()
+        perturbation = delta * image_tensor.grad.sign()
         perturbed_image_tensor = image_tensor + perturbation
         perturbed_image = unnormalize(perturbed_image_tensor.squeeze(0))
 
