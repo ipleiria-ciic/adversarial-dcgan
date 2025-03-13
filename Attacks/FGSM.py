@@ -13,14 +13,13 @@ parser.add_argument("--model", type=str)
 parser.add_argument("--delta", type=str)
 args = parser.parse_args()
 
-delta = args.delta
-batch_size = 128
+delta = float(args.delta)
+batch_size = 1
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 imagewoof_path = "Dataset/Imagewoof/train"
 model_path = f"Models/{args.model}.pt"
-output_dir = f"Attacks/FGSM-{args.delta}"
-
+output_dir = f"Attacks/FGSM/FGSM-{args.delta}"
 os.makedirs(output_dir, exist_ok=True)
 
 transform = transforms.Compose([
@@ -45,7 +44,7 @@ unnormalize = transforms.Compose([
     transforms.ToPILImage(),
 ])
 
-with alive_progress.alive_bar(len(dataloader), title="[ INFO ] Generating the FGSM attack", bar='classic', spinner=None) as bar:
+with alive_progress.alive_bar(len(dataloader), title=f"[ INFO ] Generating the FGSM attack (Delta={delta:.02f})", bar='classic', spinner=None) as bar:
     for i, (image_tensor, _) in enumerate(dataloader):
         image_tensor = image_tensor.to(device)
         image_tensor.requires_grad = True
@@ -57,7 +56,7 @@ with alive_progress.alive_bar(len(dataloader), title="[ INFO ] Generating the FG
         model.zero_grad()
         loss.backward()
 
-        perturbation = delta * image_tensor.grad.sign()
+        perturbation = float(delta) * image_tensor.grad.sign()
         perturbed_image_tensor = image_tensor + perturbation
         perturbed_image = unnormalize(perturbed_image_tensor.squeeze(0))
 
