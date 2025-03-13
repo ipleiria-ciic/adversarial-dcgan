@@ -1,0 +1,227 @@
+[
+    {
+        "model": "AlexNet",
+        "delta": "0.01",
+        "correctly_classified": 2713,
+        "fooling_rate": 0.8978990047917434,
+        "fooling_count": 2436,
+        "fid_score": 262.60752877835364,
+        "lpips_score": 0.6609222309266286
+    },
+    {
+        "model": "ResNet18",
+        "delta": "0.01",
+        "correctly_classified": 4209,
+        "fooling_rate": 0.907103825136612,
+        "fooling_count": 3818,
+        "fid_score": 262.64812475184374,
+        "lpips_score": 0.6595645553776393
+    },
+    {
+        "model": "ResNet152",
+        "delta": "0.01",
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8732317736670294,
+        "fooling_count": 4815,
+        "fid_score": 262.5099968938932,
+        "lpips_score": 0.6620203053877352
+    },
+    {
+        "model": "VGG16",
+        "delta": "0.01",
+        "correctly_classified": 5685,
+        "fooling_rate": 0.8963940193491645,
+        "fooling_count": 5096,
+        "fid_score": 262.29214275628266,
+        "lpips_score": 0.661323558186091
+    },
+    {
+        "model": "VGG19",
+        "delta": "0.01",
+        "correctly_classified": 5656,
+        "fooling_rate": 0.8861386138613861,
+        "fooling_count": 5012,
+        "fid_score": 263.03463011005977,
+        "lpips_score": 0.6639805940846831
+    },
+    {
+        "model": "AlexNet",
+        "delta": "0.05",
+        "correctly_classified": 2713,
+        "fooling_rate": 0.9078510873571692,
+        "fooling_count": 2463,
+        "fid_score": 335.1490502318593,
+        "lpips_score": 0.7279453121845019
+    },
+    {
+        "model": "ResNet18",
+        "delta": "0.05",
+        "correctly_classified": 4209,
+        "fooling_rate": 0.909479686386315,
+        "fooling_count": 3828,
+        "fid_score": 334.67988711871135,
+        "lpips_score": 0.7296355746297102
+    },
+    {
+        "model": "ResNet152",
+        "delta": "0.05",
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8708741385564018,
+        "fooling_count": 4802,
+        "fid_score": 335.0837694293079,
+        "lpips_score": 0.7295207409229397
+    },
+    {
+        "model": "VGG16",
+        "delta": "0.05",
+        "correctly_classified": 5685,
+        "fooling_rate": 0.8890061565523307,
+        "fooling_count": 5054,
+        "fid_score": 335.39510853648557,
+        "lpips_score": 0.7300897274954958
+    },
+    {
+        "model": "VGG19",
+        "delta": "0.05",
+        "correctly_classified": 5656,
+        "fooling_rate": 0.8838401697312589,
+        "fooling_count": 4999,
+        "fid_score": 335.1286606361757,
+        "lpips_score": 0.7285919372121036
+    },
+    {
+        "model": "AlexNet",
+        "delta": "0.15",
+        "correctly_classified": 2713,
+        "fooling_rate": 0.8949502395871729,
+        "fooling_count": 2428,
+        "fid_score": 272.97343769560604,
+        "lpips_score": 0.6474636811086623
+    },
+    {
+        "model": "ResNet18",
+        "delta": "0.15",
+        "correctly_classified": 4209,
+        "fooling_rate": 0.904727963886909,
+        "fooling_count": 3808,
+        "fid_score": 273.45373445109834,
+        "lpips_score": 0.6483888407002729
+    },
+    {
+        "model": "ResNet152",
+        "delta": "0.15",
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8864708015959376,
+        "fooling_count": 4888,
+        "fid_score": 273.61704724645256,
+        "lpips_score": 0.6481712219248418
+    },
+    {
+        "model": "VGG16",
+        "delta": "0.15",
+        "correctly_classified": 5685,
+        "fooling_rate": 0.8928759894459103,
+        "fooling_count": 5076,
+        "fid_score": 273.224851540985,
+        "lpips_score": 0.650164816208494
+    },
+    {
+        "model": "VGG19",
+        "delta": "0.15",
+        "correctly_classified": 5656,
+        "fooling_rate": 0.8861386138613861,
+        "fooling_count": 5012,
+        "fid_score": 274.000321991037,
+        "lpips_score": 0.6484152325705367
+    },
+    {
+        "model": "AlexNet",
+        "delta": "0.10",
+        "correctly_classified": 2713,
+        "fooling_rate": 0.8846295613711758,
+        "fooling_count": 2400,
+        "fid_score": 268.3974869546615,
+        "lpips_score": 0.5929219434755476
+    },
+    {
+        "model": "ResNet18",
+        "delta": "0.10",
+        "correctly_classified": 4209,
+        "fooling_rate": 0.9097172725112853,
+        "fooling_count": 3829,
+        "fid_score": 267.6183347318655,
+        "lpips_score": 0.592375148678375
+    },
+    {
+        "model": "ResNet152",
+        "delta": "0.10",
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8833877402974247,
+        "fooling_count": 4871,
+        "fid_score": 267.4482250209352,
+        "lpips_score": 0.593172264400048
+    },
+    {
+        "model": "VGG16",
+        "delta": "0.10",
+        "correctly_classified": 5685,
+        "fooling_rate": 0.8898856640281443,
+        "fooling_count": 5059,
+        "fid_score": 268.15286354787884,
+        "lpips_score": 0.5918930081586272
+    },
+    {
+        "model": "VGG19",
+        "delta": "0.10",
+        "correctly_classified": 5656,
+        "fooling_rate": 0.8916195190947667,
+        "fooling_count": 5043,
+        "fid_score": 267.6833894782702,
+        "lpips_score": 0.5925353940764394
+    },
+    {
+        "model": "AlexNet",
+        "delta": "0.20",
+        "correctly_classified": 2713,
+        "fooling_rate": 0.8872097309251751,
+        "fooling_count": 2407,
+        "fid_score": 261.7053660422654,
+        "lpips_score": 0.6348198388824429
+    },
+    {
+        "model": "ResNet18",
+        "delta": "0.20",
+        "correctly_classified": 4209,
+        "fooling_rate": 0.9068662390116418,
+        "fooling_count": 3817,
+        "fid_score": 261.61165703785207,
+        "lpips_score": 0.6350227236430976
+    },
+    {
+        "model": "ResNet152",
+        "delta": "0.20",
+        "correctly_classified": 5514,
+        "fooling_rate": 0.8723249909321726,
+        "fooling_count": 4810,
+        "fid_score": 260.73138352801976,
+        "lpips_score": 0.6361090825974571
+    },
+    {
+        "model": "VGG16",
+        "delta": "0.20",
+        "correctly_classified": 5685,
+        "fooling_rate": 0.9002638522427441,
+        "fooling_count": 5118,
+        "fid_score": 261.05089122341195,
+        "lpips_score": 0.6336216116711775
+    },
+    {
+        "model": "VGG19",
+        "delta": "0.20",
+        "correctly_classified": 5656,
+        "fooling_rate": 0.8817185289957568,
+        "fooling_count": 4987,
+        "fid_score": 261.46920546194417,
+        "lpips_score": 0.6344500566817048
+    }
+]
