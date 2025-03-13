@@ -1,7 +1,7 @@
-Models
 Dataset
-Attacks/FGSM
-DCGAN/FGSM/FGSM
-**/Models
-**/Images
-Testing/Generated-*
+Models
+DCGAN/FGSM
+DCGAN/UAP
+DCGAN/SGA
+DCGAN/TRM
+Images
