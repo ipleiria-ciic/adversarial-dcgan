@@ -20,7 +20,7 @@ However, we also assessed image quality using the Fréchet Inception Distance (F
 adversarial-dcgan/
 │
 ├── 🎨 Assets/                  # Logos and other visual assets
-├── ⚔️ Attacks/                  # Adversarial attack implementations
+├── ⚔️ Attacks/                 # Adversarial attack implementations
 ├── 🧠 DCGAN/                   # DCGAN and encoder source code
 ├── 📓 Notebooks/               # Jupyter notebooks with pre-trained models
 ├── 🧪 Testing/                 # Test scripts and sample evaluations
