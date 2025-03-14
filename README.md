@@ -57,4 +57,4 @@ Reproducing this work is simple. Just follow these steps:
 And that's it. The adversarial DCGAN pipeline is ready to go.
 
 ## Acknowledgements
-This work is funded by FCT - Fundação para a Ciência e a Tecnologia, I.P., through project with reference UIDB/04524/2020.
+This work is funded by [Fundação para a Ciência e a Tecnologia](https://www.fct.pt/) through project UIDB/04524/2020.
