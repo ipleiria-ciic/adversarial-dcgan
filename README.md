@@ -15,5 +15,21 @@ This project explores the use of deep convolutional generative adversarial netwo
 
 However, we also assessed image quality using the Fréchet Inception Distance (FID) and Learned Perceptual Image Patch Similarity (LPIPS) metrics. Our results indicate that while achieving a high FR is feasible, maintaining image quality is equally important - _yet more challenging_ - for generating effective adversarial examples.
 
+### Repository Structure
+```
+adversarial-dcgan/
+│
+├── 🎨 Assets/                  # Logos and other visual assets
+├── ⚔️ Attacks/                  # Adversarial attack implementations
+├── 🧠 DCGAN/                   # DCGAN and encoder source code
+├── 📓 Notebooks/               # Jupyter notebooks with pre-trained models
+├── 🧪 Testing/                 # Test scripts and sample evaluations
+├── 🙈 .gitignore               # Git ignore file
+├── 🛠️ DCGAN-Training.sh        # Shell script for training DCGAN
+├── 🛠️ Encoder-Training.sh      # Shell script for training the encoder
+├── 📜 README.md                # Project documentation
+├── 🚀 Testing.sh               # Test script for validating the implementation
+```
+
 ### Acknowledgements
 This work is funded by FCT - Fundação para a Ciência e a Tecnologia, I.P., through project with reference UIDB/04524/2020.
