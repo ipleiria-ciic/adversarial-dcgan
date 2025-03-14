@@ -1,4 +1,4 @@
-# A Study on the Effectiveness of an Adversarial DCGAN
+# A Study on the Effectiveness of DCGAN-based Adversarial Attacks
 
 ---
 
