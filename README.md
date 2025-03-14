@@ -1,4 +1,4 @@
-## Fooling Rate and Perceptual Similarity: A Study on the Effectiveness and Quality of DCGAN-based Adversarial Attacks
+# A Study on the Effectiveness of an Adversarial DCGAN
 
 ---
 
@@ -8,14 +8,14 @@
 
 ---
 
-### Description
+## Description
 Deep neural networks (DNNs), while widely used for classification and recognition tasks in computer vision, are vulnerable to adversarial attacks. These attacks craft imperceptible perturbations that can easily mislead DNN models across various real-world scenarios, potentially leading to severe consequences. 
 
 This project explores the use of deep convolutional generative adversarial networks (DCGANs) with an additional encoder to generate adversarial images that can deceive DNN models. We trained the DCGAN using images from four different adversarial attacks with varying perturbation levels and tested them on five DNN models. Our experiments demonstrate that the generated adversarial images achieved a high fooling rate (FR) of up to 91.21%. 
 
 However, we also assessed image quality using the Fréchet Inception Distance (FID) and Learned Perceptual Image Patch Similarity (LPIPS) metrics. Our results indicate that while achieving a high FR is feasible, maintaining image quality is equally important - _yet more challenging_ - for generating effective adversarial examples.
 
-### Repository Structure
+## Repository Structure
 ```
 adversarial-dcgan/
 │
@@ -31,30 +31,30 @@ adversarial-dcgan/
 ├── 🚀 Testing.sh               # Test script for validating the implementation
 ```
 
-### Usage
+## Usage
 
 Reproducing this work is simple. Just follow these steps:
 
-1️⃣ **Prepare the Attack**
+**Prepare the Attack**
 
 - Ensure you have the necessary attack — either the code to generate the perturbation or the perturbation itself in any format.
 
-2️⃣ **Train the DCGAN**
+**Train the DCGAN**
 
-- Run DCGAN-Training.sh to generate adversarial images and train the DCGAN on them.
+- Run `DCGAN-Training.sh` to generate adversarial images and train the DCGAN on them.
 - Want to tweak settings? You can modify the script to change the model, attack type, number of epochs, or delta values.
 
-3️⃣ **Train the Encoder**
+**Train the Encoder**
 
-- Run Encoder-Training.sh to train the encoder using the best checkpoint from the DCGAN training.
+- Run `Encoder-Training.sh` to train the encoder using the best checkpoint from the DCGAN training.
 - Make sure to specify the correct checkpoint within the script.
 
-4️⃣ **Test & Evaluate**
+**Test & Evaluate**
 
-- Run Testing.sh to test and evaluate the generated images.
+- Run `Testing.sh` to test and evaluate the generated images.
 - Results will be saved in a JSON file for further analysis.
 
 And that's it. The adversarial DCGAN pipeline is ready to go.
 
-### Acknowledgements
+## Acknowledgements
 This work is funded by FCT - Fundação para a Ciência e a Tecnologia, I.P., through project with reference UIDB/04524/2020.
