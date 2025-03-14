@@ -31,5 +31,30 @@ adversarial-dcgan/
 ├── 🚀 Testing.sh               # Test script for validating the implementation
 ```
 
+### Usage
+
+Reproducing this work is simple. Just follow these steps:
+
+1️⃣ **Prepare the Attack**
+
+- Ensure you have the necessary attack — either the code to generate the perturbation or the perturbation itself in any format.
+
+2️⃣ **Train the DCGAN**
+
+- Run DCGAN-Training.sh to generate adversarial images and train the DCGAN on them.
+- Want to tweak settings? You can modify the script to change the model, attack type, number of epochs, or delta values.
+
+3️⃣ **Train the Encoder**
+
+- Run Encoder-Training.sh to train the encoder using the best checkpoint from the DCGAN training.
+- Make sure to specify the correct checkpoint within the script.
+
+4️⃣ **Test & Evaluate**
+
+- Run Testing.sh to test and evaluate the generated images.
+- Results will be saved in a JSON file for further analysis.
+
+And that's it. The adversarial DCGAN pipeline is ready to go.
+
 ### Acknowledgements
 This work is funded by FCT - Fundação para a Ciência e a Tecnologia, I.P., through project with reference UIDB/04524/2020.
