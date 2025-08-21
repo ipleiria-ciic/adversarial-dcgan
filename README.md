@@ -8,11 +8,11 @@
 
 ---
 
-## Article & Citation
+## Publication and Citation
 
 This work was presented and published at the _20th International Conference on Availability, Reliability and Security_ (ARES 2025). The paper is available [here](https://link.springer.com/chapter/10.1007/978-3-032-00627-1_21). If you reference this work in any context, please use the following citation:
 
-```latex
+```bibtex
 @InProceedings{Areia2025,
     author="Areia, Jos{\'e} and Santos, Leonel and Costa, Rog{\'e}rio Lu{\'i}s de C.",
     editor="Dalla Preda, Mila and Schrittwieser, Sebastian and Naessens, Vincent and De Sutter, Bjorn",
