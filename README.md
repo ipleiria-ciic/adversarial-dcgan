@@ -10,7 +10,7 @@
 
 ## Publication and Citation
 
-This work was presented and published at the _20th International Conference on Availability, Reliability and Security_ (ARES 2025). The paper is available [here](https://link.springer.com/chapter/10.1007/978-3-032-00627-1_21). If you reference this work in any context, please use the following citation:
+This work was presented and published at the 20th International Conference on Availability, Reliability and Security ([ARES 2025](https://2025.ares-conference.eu/)). The paper is available [here](https://link.springer.com/chapter/10.1007/978-3-032-00627-1_21). If you reference this work in any context, please use the following citation:
 
 ```bibtex
 @InProceedings{Areia2025,
