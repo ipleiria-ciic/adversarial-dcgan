@@ -8,15 +8,10 @@
 
 ---
 
-## Publication and Citation
+## Publication Information
 
-**Title**: _Fooling Rate and Perceptual Similarity: A Study on the Effectiveness and Quality of DCGAN-based Adversarial Attacks_
+This work was presented and published at the _20th International Conference on Availability, Reliability and Security ([ARES 2025](https://2025.ares-conference.eu/))_. The paper is available at [SpringerLink](https://link.springer.com/chapter/10.1007/978-3-032-00627-1_21). If you reference this work in any context, please use the following citation:
 
-**Published in:** _Proceedings of the 20th International Conference on Availability, Reliability and Security ([ARES 2025](https://2025.ares-conference.eu))_
-
-**Available at:** [SpringerLink](https://link.springer.com/chapter/10.1007/978-3-032-00627-1_21) 
-
-**BiBTeX Citation:**
 ```bibtex
 @InProceedings{Areia2025,
     author="Areia, Jos{\'e} and Santos, Leonel and Costa, Rog{\'e}rio Lu{\'i}s de C.",
