@@ -8,6 +8,25 @@
 
 ---
 
+## Article & Citation
+
+This work was presented and published at the _20th International Conference on Availability, Reliability and Security_ (ARES 2025). The paper is available [here](https://link.springer.com/chapter/10.1007/978-3-032-00627-1_21). If you reference this work in any context, please use the following citation:
+
+```latex
+@InProceedings{Areia2025,
+    author="Areia, Jos{\'e} and Santos, Leonel and Costa, Rog{\'e}rio Lu{\'i}s de C.",
+    editor="Dalla Preda, Mila and Schrittwieser, Sebastian and Naessens, Vincent and De Sutter, Bjorn",
+    title="Fooling Rate and Perceptual Similarity: A Study on the Effectiveness and Quality of DCGAN-based Adversarial Attacks",
+    booktitle="Availability, Reliability and Security",
+    year="2025",
+    publisher="Springer Nature Switzerland",
+    address="Cham",
+    pages="420--430",
+    isbn="978-3-032-00627-1",
+    doi="10.1007/978-3-032-00627-1_21"
+}
+```
+
 ## Description
 Deep neural networks (DNNs), while widely used for classification and recognition tasks in computer vision, are vulnerable to adversarial attacks. These attacks craft imperceptible perturbations that can easily mislead DNN models across various real-world scenarios, potentially leading to severe consequences. 
 
